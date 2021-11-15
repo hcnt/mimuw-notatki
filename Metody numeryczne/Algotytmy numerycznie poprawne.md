@@ -1,4 +1,4 @@
-# Algorytmy numerycznie poprawne
+# Algotytmy numerycznie poprawne
 
 Problem zadanie obliczeniowe (zdefiniowane tak samo jak w [[Wrazliwosc zadania obliczeniowego#Zadanie obliczeniowe]])
 

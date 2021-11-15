@@ -1,4 +1,4 @@
-# Metody numeryczne
+# Metody Numeryczne
 
 Notatki z przedmiotu na mimuw, semestr zimowy 2021/22
 
@@ -16,4 +16,7 @@ nic nie rozumiem
 [[Wrazliwosc zadania obliczeniowego]]
 [[Algotytmy numerycznie poprawne]]
 
-## 4 - 
+## 4 - Zadanie najmniejszych kwadratów
+
+[[Przekształcenie Householdera]]
+[[Rozkład QR (Wąski)]]

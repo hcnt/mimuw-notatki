@@ -1,4 +1,4 @@
-# Wrażliwość zadania obliczeniowego
+# Wrazliwosc zadania obliczeniowego
 
 ## Zadanie obliczeniowe
 Dana jest funkcja $f: D \rightarrow W$, wyznaczyć $y = f(x)$
