@@ -1,9 +1,10 @@
-# ASD Wykład 2 - Algorytmy sortowania
+# ASD Wykład 2 i 3 - Algorytmy sortowania
 
 ## Insertion sort
 
 Dla każdego elementu zamieniamy go po kolei z elementami większymi od niego po lewej stronie
 
+### Cechy
 - liczba porównań $n-1 + Inv(a)$ (*pesymistyczne $O(n^2)$*)
 - liczba przesunięć $Inv(a)$ (*pesymistyczne $O(n^2)$*)
 - [[ASD Wykład 1 - Algorytmy i Sortowanie#Algorytm w miejscu|w miejscu]]
@@ -54,6 +55,8 @@ Zatem cały algorytm Shella z krokami Pratta zajmuję $O(n\log^2n)$
 
 ## Bubble sort
 xD 
+
+### Cechy
 - liczba porównań $n(n-1)/2$
 - liczba zamian $Inv(a)$ (*pesymistyczne $O(n^2)$*)
 - [[ASD Wykład 1 - Algorytmy i Sortowanie#Algorytm w miejscu|w miejscu]]
@@ -61,13 +64,13 @@ xD
 
 ## Selection sort
 
-Iterując od końca
-Z prefixu tablicy wybieramy maksymalny element i wkładamy go na koniec aktualnego prefixu
+1. Iterując od końca:
+	1. Z prefixu tablicy wybieramy maksymalny element i wkładamy go na koniec aktualnego prefixu
 
+### Cechy
 - liczba porównań $n(n-1)/2$
 - liczba zamian $n-1$
 - [[ASD Wykład 1 - Algorytmy i Sortowanie#Algorytm w miejscu|w miejscu]]
-
 ### Usprawnienie - Heap sort
 #### Kopiec zupełny
 Jest to pełne [[Drzewo binarne|drzewo binarne]] w którym mamy zachowaną własność: Rodzic jest niemniejszy/niewiększy (kopiec typu MAX/MIN) od swoich dzieci
@@ -124,6 +127,7 @@ Następnie scalamy oba posortowane ciągi, podstawowo scalanie odbywa się w tab
 
 Tak naprawdę nie musimy używać wywołań rekurencyjnych, możemy od dołu scalać ciągi długości 2,4,8...
 
+### Cechy
 - liczba porównań $O(n \log n)$
 - liczba przypisań $O(n \log n)$
 - [[ASD Wykład 1 - Algorytmy i Sortowanie#Stabliny algorytm sortowania|stabilny]]
@@ -140,9 +144,16 @@ dzielimy elementy na
 - `s1` = zbiór elementów mniejszych od `p` 
 - `s2` = zbiór elementów większych od `p` 
 
+
 naszym wynikiem jest `qs(s1), p, qs(s2)`
 
+ Standardowo podział robimy na tablicy korzystając z 2 wskaźników
+
+### Cechy
 - liczba porównań: suma głębokości w drzewie obliczeń `qs`
+- złożoność pamięciowa: $O(\log n)$ (pamięć na rekurencje)[^1]
+
+[^1]:zakładając że na stosie nie pamiętamy naiwnie wszystkich wywołań ale zawsze schodzimy najpierw do krótszego przedziału #todo jaśniej wyjaśnić xD
 
 Kiedy mamy najmniej porównań? gdy drzewo obliczeń jest pełnym drzewem binarnym, czyli `pivot(a)` zawsze dzieli tablicę na pół, wtedy ilość porównań jest rzędu $O(n\log n)$
 
@@ -153,3 +164,62 @@ Jeżeli pesymistyczna złożoność jest $O(n^2)$ to dlaczego nazywamy to sortow
 Spójrzmy na oczekiwaną ilość porównań gdy `pivot(a)` losuje element z tablicy z jednakowym prawdopodobieństwem
  #todo
  No ogólnie wychodzi średnio $n \log n$ z bardzo dobrą stałą $2/\log e \approx 1.4$ xD
+ 
+ 
+ ### Quick sort - modyfikacje
+ 
+ Co możemy zmieniać?
+ 
+ - Implementacja funkcji `pivot`
+ - Sposób dokonywania podziału na `s1` i `s2`
+ 
+ #### Pierwszy element jako element dzielący
+ Nie za bardzo chcemy losować element dzielący, więc co jeżeli bralibyśmy po prostu zawsze pierwszy element listy? 
+ 
+ Żeby to cały czas działało musielibyśmy zapewnić że mając losową permutacje w `a` taki podział będzie generował losowe permutacje w `s1` oraz `s2`
+ 
+ Okazuje się że zapewnia, dowód jest na wykładzie i jest w nim dużo dyskretnej więc chyba nie warto się zgłębiać (xD)
+ 
+ >Jeżeli `a[1..n]` jest losową permutacją to `a[1..j-1]` i `a[j+1..n]` są losowymi permutacjami
+
+Można też bezpośrednio policzyć że w tej wariancji stała przy $n \log n$ wynosi także $\approx 1.4$
+
+## Count sort
+Zakładamy że uniwersum które sortujemy ma skończony zbiór wartości ${1..m}$
+Definiuję tablice dodatkowe `b` i `t`
+
+1. Wypełniam dodatkową tablicę `b` częstością występowania każdej wartości w tablicy `a`, gdzie w `b[i]` znajduje sie ilość wystąpień elementu `i`
+
+2. Tablicę `b` wypełniam sumami prefixowymi, dzięki temu na `b[i]` znajduje się teraz ostatnia pozycja elementu o wartości `i` w tablicy posortowanej
+
+3. Iterując od końca: 
+	1. Wpisuje do tablicy `t` wartość `a[i]` na pozycji zapisanej w `b`
+	2. Zmniejszam ostatnią pozycję `a[i]` w tablicy `b` o jeden
+
+### Cechy
+- złożoność  czasowa $O(n+m)$
+- złożoność  pamięciowa $O(m)$
+- [[ASD Wykład 1 - Algorytmy i Sortowanie#Stabliny algorytm sortowania|stabilny]]
+
+## Bucket sort
+Zakładamy że uniwersum które sortujemy ma skończony zbiór wartości ${1..m}$
+1. Inicjalizujemy $m$ pustych list 
+2. Każdy element wrzucamy na koniec odpowiadającej listy
+3. łączymy wszystkie listy
+
+### Cechy
+- złożoność  czasowa $O(n+m)$
+- [[ASD Wykład 1 - Algorytmy i Sortowanie#Stabliny algorytm sortowania|stabilny]]
+
+### Sortowanie leksykograficzne słów tej samej długości
+Mamy daną tablicę słów długości $k$ nad alfabetem długości $m$
+
+1. Dla każdej pozycji litery `i` od końca:
+	1. Posortuj słowa **stabilnie** względem liter na pozycji `i` 
+
+Złożoność to $O(k(n + m))$
+
+### Sortowanie leksykograficzne
+#todo
+R: suma długości słów
+Złożoność: $O(R + m)$

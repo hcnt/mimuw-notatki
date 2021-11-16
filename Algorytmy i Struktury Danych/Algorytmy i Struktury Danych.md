@@ -2,7 +2,8 @@
 
 ### Wykłady
 - [[ASD Wykład 1 - Algorytmy i Sortowanie]]
-- [[ASD Wykład 2 - Algorytmy sortowania]]
+- [[ASD Wykład 2 i 3 - Algorytmy sortowania]]
+- [[ASD Wykład 4 - Statystyki pozycyjne]]
 
 
 ### Ćwiczenia i zadania z kolokwiów
