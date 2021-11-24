@@ -1,11 +1,11 @@
 # Metody Numeryczne
 
-Notatki z przedmiotu na mimuw, semestr zimowy 2021/22
-
 
 ## 1 - Układy równań liniowych
 
-nic nie rozumiem
+nic nie rozumiem z pierwszego wykładu
+[[Rozwiązywanie układów równań liniowych przez rozkład QR]]
+[[Rozwiązywanie układów równań liniowych przez metody iteracyjne]]
 
 ## 2 - Arytmetyka zmiennopozycyjna
 
@@ -19,4 +19,15 @@ nic nie rozumiem
 ## 4 - Zadanie najmniejszych kwadratów
 
 [[Przekształcenie Householdera]]
-[[Rozkład QR (Wąski)]]
+[[Rozkład QR]]
+[[Liniowe Zadanie Najmniejszych Kwadratów]]
+[[Rozkład SVD]]
+
+## 5 - Zadanie własne
+
+[[Zadania własne]]
+
+## Interpolacja wielomianowa
+
+[[Bazy wielomianowe]]
+[[Interpolacja Lagrange'a]]
